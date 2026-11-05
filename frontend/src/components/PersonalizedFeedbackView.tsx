@@ -16,49 +16,49 @@ export const PersonalizedFeedbackView: React.FC<PersonalizedFeedbackViewProps> =
       title: 'A. Overall Assessment',
       icon: Sparkles,
       content: feedback.overall_assessment,
-      bg: 'bg-brand-500/10 border-brand-500/25 text-brand-200'
+      bg: 'bg-brand-500/5 border-brand-500/20 text-brand-200'
     },
     {
       title: 'B. Functional Conformance',
       icon: CheckCircle2,
       content: feedback.functional_analysis,
-      bg: 'bg-surface-950 border-surface-800 text-surface-300'
+      bg: 'bg-surface-950/80 border-surface-800/80 text-surface-300'
     },
     {
       title: 'C. Code Quality & Standards',
       icon: FileCode,
       content: feedback.quality_feedback,
-      bg: 'bg-surface-950 border-surface-800 text-surface-300'
+      bg: 'bg-surface-950/80 border-surface-800/80 text-surface-300'
     },
     {
       title: 'D. Algorithmic Complexity Evaluation',
       icon: Cpu,
       content: feedback.complexity_feedback,
-      bg: 'bg-surface-950 border-surface-800 text-surface-300'
+      bg: 'bg-surface-950/80 border-surface-800/80 text-surface-300'
     },
     {
       title: 'E. Error Diagnostics & Defect Analysis',
       icon: ShieldAlert,
       content: feedback.error_explanation,
-      bg: 'bg-surface-950 border-surface-800 text-surface-300'
+      bg: 'bg-surface-950/80 border-surface-800/80 text-surface-300'
     },
     {
       title: 'F. Concrete Improvement Suggestions',
       icon: Lightbulb,
       content: feedback.improvement_suggestions,
-      bg: 'bg-surface-950 border-surface-800 text-surface-200 whitespace-pre-wrap'
+      bg: 'bg-surface-950/90 border-surface-800 text-surface-200 whitespace-pre-wrap font-mono'
     },
   ];
 
   return (
     <div className="bg-surface-900 border border-surface-800 rounded-2xl p-6 shadow-xl space-y-6">
-      <div className="pb-4 border-b border-surface-800">
+      <div className="pb-4 border-b border-surface-800/80">
         <div className="flex items-center gap-2">
           <Sparkles className="w-5 h-5 text-brand-400" />
-          <h3 className="text-lg font-bold text-white tracking-tight">Personalized AI Feedback Report</h3>
+          <h3 className="text-lg font-bold text-white tracking-tight">Personalized Technical Feedback Report</h3>
         </div>
         <p className="text-xs text-surface-400 mt-1">
-          Grounded, technical evaluation synthesized from actual execution results, AST parser, and ML diagnostics
+          Grounded, technical assessment generated from actual execution results, AST parser, and ML diagnostics
         </p>
       </div>
 
@@ -67,23 +67,23 @@ export const PersonalizedFeedbackView: React.FC<PersonalizedFeedbackViewProps> =
           const Icon = sec.icon;
           return (
             <div key={idx} className={`p-4 rounded-xl border ${sec.bg} space-y-2 text-xs`}>
-              <div className="flex items-center gap-2 font-semibold text-white">
-                <Icon className="w-4 h-4 text-brand-400" />
+              <div className="flex items-center gap-2 font-semibold text-white font-mono text-[11px]">
+                <Icon className="w-3.5 h-3.5 text-brand-400" />
                 <span>{sec.title}</span>
               </div>
-              <p className="leading-relaxed font-mono text-[12px] opacity-90">{sec.content}</p>
+              <p className="leading-relaxed font-sans text-xs opacity-95">{sec.content}</p>
             </div>
           );
         })}
 
         {/* Section G: Learning Recommendations */}
         {feedback.learning_recommendations && feedback.learning_recommendations.length > 0 && (
-          <div className="p-4 rounded-xl bg-gradient-to-r from-indigo-950/40 to-surface-950 border border-brand-500/30 space-y-2.5">
-            <div className="flex items-center gap-2 font-semibold text-white text-xs">
+          <div className="p-4 rounded-xl bg-surface-950 border border-brand-500/25 space-y-2.5">
+            <div className="flex items-center gap-2 font-semibold text-white text-xs font-mono">
               <GraduationCap className="w-4 h-4 text-brand-400" />
-              <span>G. Curated Learning Recommendations</span>
+              <span>G. Curated Computer Science Learning Recommendations</span>
             </div>
-            <p className="text-xs text-surface-400">Targeted computer science topics based on detected performance gaps:</p>
+            <p className="text-xs text-surface-400">Recommended algorithms and data structures based on detected code patterns:</p>
             <div className="flex flex-wrap gap-2 pt-1">
               {feedback.learning_recommendations.map((topic, i) => (
                 <span

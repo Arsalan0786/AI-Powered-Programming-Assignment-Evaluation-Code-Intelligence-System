@@ -88,3 +88,4 @@ def decode_access_token(token: str) -> Dict[str, Any]:
             headers={"WWW-Authenticate": "Bearer"},
         )
     return payload
+

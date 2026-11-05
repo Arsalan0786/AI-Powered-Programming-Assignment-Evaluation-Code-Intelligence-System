@@ -219,3 +219,4 @@ export interface FacultyAnalytics {
   complexity_distribution: Array<{ complexity: string; count: number }>;
   language_distribution: Array<{ language: string; count: number }>;
 }
+

@@ -152,3 +152,4 @@ export const FacultySimilarityPage: React.FC<FacultySimilarityPageProps> = ({ on
     </div>
   );
 };
+

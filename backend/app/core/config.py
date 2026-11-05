@@ -21,3 +21,4 @@ class Settings(BaseModel):
     ML_MODEL_DIR: str = os.path.join(BASE_DIR, "..", "ml_models", "saved_models")
 
 settings = Settings()
+

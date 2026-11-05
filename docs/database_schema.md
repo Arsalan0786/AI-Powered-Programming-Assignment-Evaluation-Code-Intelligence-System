@@ -95,3 +95,4 @@ The database is built on SQLAlchemy and supports both **PostgreSQL** (production
 
 ### `feedback_reports`
 - Stores the 7 sections of grounded technical feedback: `overall_assessment`, `functional_analysis`, `quality_feedback`, `complexity_feedback`, `error_explanation`, `improvement_suggestions`, and `learning_recommendations`.
+

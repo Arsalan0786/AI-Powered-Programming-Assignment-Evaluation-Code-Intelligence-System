@@ -217,3 +217,4 @@ class FeedbackReport(Base):
     generated_at = Column(DateTime, default=datetime.datetime.utcnow)
     
     submission = relationship("Submission", back_populates="feedback")
+

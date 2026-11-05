@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Send, Save, RotateCcw, Check, Sparkles } from 'lucide-react';
+import { Play, Send, Save, RotateCcw, Check, Sparkles, Terminal } from 'lucide-react';
 
 interface CodeEditorProps {
   initialCode?: string;
@@ -89,20 +89,20 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
   };
 
   const lineCount = code.split('\n').length;
-  const lineNumbers = Array.from({ length: Math.max(15, lineCount) }, (_, i) => i + 1);
+  const lineNumbers = Array.from({ length: Math.max(16, lineCount) }, (_, i) => i + 1);
 
   return (
-    <div className="bg-surface-900 border border-surface-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-full">
+    <div className="bg-surface-900 border border-surface-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-full ring-1 ring-white/5">
       {/* Editor Toolbar */}
-      <div className="bg-surface-950 border-b border-surface-800 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div className="bg-surface-950 border-b border-surface-800/80 px-4 py-2.5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           {/* Language Selector */}
           <div className="flex items-center gap-2">
-            <span className="text-xs text-surface-400 font-semibold uppercase">Language:</span>
+            <span className="text-[10px] text-surface-400 font-mono font-semibold uppercase">Lang:</span>
             <select
               value={language}
               onChange={(e) => handleLanguageChange(e.target.value)}
-              className="bg-surface-900 border border-surface-700 text-white text-xs rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-brand-500 capitalize"
+              className="bg-surface-900 border border-surface-700/80 text-white text-xs rounded-lg px-2.5 py-1 focus:outline-none focus:border-brand-500 capitalize font-mono"
             >
               {allowedLanguages.map((lang) => (
                 <option key={lang} value={lang.toLowerCase()}>
@@ -129,7 +129,7 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
           )}
           <button
             onClick={handleSaveDraft}
-            className="flex items-center gap-1.5 text-xs text-surface-300 hover:text-white bg-surface-900 border border-surface-700 px-3 py-1.5 rounded-lg transition"
+            className="flex items-center gap-1.5 text-xs text-surface-300 hover:text-white bg-surface-900 border border-surface-700/80 px-3 py-1.5 rounded-lg transition"
           >
             <Save className="w-3.5 h-3.5" /> Save Draft
           </button>
@@ -138,7 +138,7 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
             <button
               onClick={() => onRunSample(code, language)}
               disabled={isSubmitting}
-              className="flex items-center gap-1.5 text-xs text-white bg-surface-800 hover:bg-surface-700 border border-surface-700 px-3 py-1.5 rounded-lg font-medium transition disabled:opacity-50"
+              className="flex items-center gap-1.5 text-xs text-white bg-surface-850 hover:bg-surface-750 border border-surface-700/80 px-3 py-1.5 rounded-lg font-medium transition disabled:opacity-50"
             >
               <Play className="w-3.5 h-3.5 text-emerald-400" /> Run Sample
             </button>
@@ -147,7 +147,7 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
           <button
             onClick={() => onSubmit(code, language)}
             disabled={isSubmitting}
-            className="flex items-center gap-1.5 text-xs text-white bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 shadow-md shadow-brand-600/30 px-4 py-1.5 rounded-lg font-semibold transition disabled:opacity-50"
+            className="flex items-center gap-1.5 text-xs text-white bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 shadow-md shadow-brand-600/25 px-4 py-1.5 rounded-lg font-semibold transition disabled:opacity-50 ring-1 ring-brand-400/30"
           >
             {isSubmitting ? (
               <>
@@ -164,9 +164,9 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
       </div>
 
       {/* Editor Body with Line Numbers */}
-      <div className="flex flex-1 min-h-[460px] bg-surface-950 font-mono text-sm relative">
-        {/* Line Numbers column */}
-        <div className="select-none py-4 px-3 text-right bg-surface-950/90 text-surface-600 border-r border-surface-800/80 text-xs w-12 shrink-0">
+      <div className="flex flex-1 min-h-[460px] bg-surface-950/95 font-mono text-sm relative">
+        {/* Line Numbers Column */}
+        <div className="select-none py-4 px-3 text-right bg-surface-950 text-surface-600 border-r border-surface-800/80 text-xs w-12 shrink-0 font-mono">
           {lineNumbers.map((num) => (
             <div key={num} className="leading-6">
               {num}
@@ -179,19 +179,19 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
           value={code}
           onChange={(e) => setCode(e.target.value)}
           spellCheck={false}
-          className="flex-1 p-4 bg-transparent text-slate-100 resize-none focus:outline-none leading-6 text-xs sm:text-sm font-mono selection:bg-brand-500/40"
+          className="flex-1 p-4 bg-transparent text-slate-100 resize-none focus:outline-none leading-6 text-xs sm:text-sm font-mono selection:bg-brand-500/30"
           placeholder="Write or paste your solution code here..."
         />
       </div>
 
       {/* Bottom Status Bar */}
-      <div className="bg-surface-950 border-t border-surface-800 px-4 py-2 flex items-center justify-between text-[11px] text-surface-400">
+      <div className="bg-surface-950 border-t border-surface-800/80 px-4 py-2 flex items-center justify-between text-[10px] font-mono text-surface-400">
         <div className="flex items-center gap-4">
           <span>Lines: {lineCount}</span>
-          <span>Characters: {code.length}</span>
-          <span>Mode: UTF-8</span>
+          <span>Chars: {code.length}</span>
+          <span>UTF-8</span>
         </div>
-        <div className="flex items-center gap-1 text-brand-400">
+        <div className="flex items-center gap-1.5 text-brand-400">
           <Sparkles className="w-3 h-3" />
           <span>Docker Sandbox Ready</span>
         </div>

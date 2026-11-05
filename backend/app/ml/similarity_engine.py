@@ -140,3 +140,4 @@ class CodeSimilarityEngine:
         return matches
 
 similarity_engine = CodeSimilarityEngine()
+

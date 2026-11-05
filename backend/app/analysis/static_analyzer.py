@@ -251,3 +251,4 @@ class StaticCodeAnalyzer:
         }
 
 static_analyzer = StaticCodeAnalyzer()
+

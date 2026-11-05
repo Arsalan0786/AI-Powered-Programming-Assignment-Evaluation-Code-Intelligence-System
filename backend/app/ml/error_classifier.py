@@ -182,3 +182,4 @@ class ProgrammingErrorClassifier:
         return None
 
 error_classifier = ProgrammingErrorClassifier()
+

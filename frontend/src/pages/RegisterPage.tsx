@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Terminal, Lock, Mail, User, School, ArrowRight } from 'lucide-react';
+import { Logo } from '../components/Logo';
+import { Lock, Mail, User, School, ArrowRight } from 'lucide-react';
 
 interface RegisterPageProps {
   onNavigate: (page: string) => void;
@@ -42,12 +43,10 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({ onNavigate }) => {
   return (
     <div className="min-h-screen bg-surface-950 flex flex-col justify-center items-center px-4 py-12 relative overflow-hidden">
       <div className="w-full max-w-md relative z-10 space-y-6">
-        <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-500 mx-auto flex items-center justify-center shadow-xl shadow-brand-500/25">
-            <Terminal className="w-6 h-6 text-white" />
-          </div>
-          <h2 className="text-2xl font-bold tracking-tight text-white">Register Account</h2>
-          <p className="text-xs text-surface-400">Join the AI Code Assessment Platform</p>
+        <div className="text-center space-y-3 flex flex-col items-center">
+          <Logo size="lg" />
+          <h2 className="text-xl font-bold tracking-tight text-white">Create Academic Account</h2>
+          <p className="text-xs text-surface-400">Join the Automated Assessment Platform</p>
         </div>
 
         <div className="bg-surface-900 border border-surface-800 p-6 rounded-2xl shadow-xl space-y-4">
@@ -156,7 +155,7 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({ onNavigate }) => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-semibold transition shadow-md shadow-brand-600/30 flex items-center justify-center gap-1.5 disabled:opacity-50 mt-2"
+              className="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-semibold transition shadow-md shadow-brand-600/25 flex items-center justify-center gap-1.5 disabled:opacity-50 mt-2"
             >
               {loading ? 'Creating Account...' : 'Complete Registration'}
             </button>

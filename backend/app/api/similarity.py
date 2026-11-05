@@ -68,3 +68,4 @@ def review_similarity_report(
     db.commit()
     db.refresh(report)
     return {"message": "Similarity review successfully updated.", "id": report.id}
+

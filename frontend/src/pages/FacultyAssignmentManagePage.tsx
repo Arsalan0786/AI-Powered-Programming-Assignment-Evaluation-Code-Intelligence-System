@@ -351,3 +351,4 @@ export const FacultyAssignmentManagePage: React.FC<FacultyAssignmentManagePagePr
     </div>
   );
 };
+

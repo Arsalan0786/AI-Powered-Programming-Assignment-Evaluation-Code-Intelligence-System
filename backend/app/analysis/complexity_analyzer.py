@@ -239,3 +239,4 @@ class ComplexityAnalyzer:
         }
 
 complexity_analyzer = ComplexityAnalyzer()
+

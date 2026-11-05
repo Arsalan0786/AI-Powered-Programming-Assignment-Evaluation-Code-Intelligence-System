@@ -1,8 +1,8 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
 import {
-  LayoutDashboard, BookOpen, Code2, LineChart, FileCheck2,
-  Users, CopyCheck, PlusCircle, Settings, Award
+  LayoutDashboard, BookOpen, FileCheck2, LineChart,
+  CopyCheck, PlusCircle, Award, Terminal, Sparkles
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -35,10 +35,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => 
   const links = isFaculty ? facultyLinks : studentLinks;
 
   return (
-    <aside className="w-64 border-r border-surface-800 bg-surface-950/60 p-4 flex flex-col justify-between hidden md:flex shrink-0 min-h-[calc(100vh-4rem)]">
+    <aside className="w-64 border-r border-surface-800/80 bg-surface-950/60 p-4 flex flex-col justify-between hidden md:flex shrink-0 min-h-[calc(100vh-4rem)]">
       <div className="space-y-6">
         <div>
-          <p className="text-[11px] font-semibold text-surface-400 uppercase tracking-wider px-3 mb-2">
+          <p className="text-[10px] font-mono uppercase tracking-wider text-surface-400 px-3 mb-2 font-semibold">
             {isFaculty ? 'Faculty Control Suite' : 'Student Workspace'}
           </p>
           <nav className="space-y-1">
@@ -49,13 +49,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => 
                 <button
                   key={link.id}
                   onClick={() => onNavigate(link.id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                     active
-                      ? 'bg-brand-600/15 text-brand-300 border border-brand-500/30 shadow-sm'
-                      : 'text-surface-400 hover:text-white hover:bg-surface-900/60'
+                      ? 'bg-brand-500/10 text-white border border-brand-500/30 shadow-sm shadow-brand-500/10'
+                      : 'text-surface-400 hover:text-surface-200 hover:bg-surface-900/60'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${active ? 'text-brand-400' : 'text-surface-400'}`} />
+                  <Icon className={`w-4 h-4 ${active ? 'text-brand-400' : 'text-surface-500'}`} />
                   {link.label}
                 </button>
               );
@@ -63,20 +63,23 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate }) => 
           </nav>
         </div>
 
-        {/* Feature Highlights Card */}
-        <div className="p-3.5 rounded-xl bg-gradient-to-b from-surface-900 to-surface-950 border border-surface-800 text-xs">
-          <div className="flex items-center gap-2 text-brand-400 font-semibold mb-1.5">
-            <Award className="w-4 h-4" />
-            <span>AI Code Intelligence</span>
+        {/* Intelligence Status Card */}
+        <div className="p-3.5 rounded-xl bg-surface-900/80 border border-surface-800/80 shadow-sm text-xs space-y-1.5">
+          <div className="flex items-center gap-1.5 text-brand-300 font-semibold text-xs">
+            <Sparkles className="w-3.5 h-3.5 text-brand-400" />
+            <span>Active Assessment Engine</span>
           </div>
           <p className="text-surface-400 leading-relaxed text-[11px]">
-            Real-time evaluation with AST static analysis, Big-O estimation, and ML error classification.
+            Real-time AST traversal, McCabe decision paths, and supervised ML error diagnosis active.
           </p>
         </div>
       </div>
 
-      <div className="pt-4 border-t border-surface-800 text-surface-500 text-[11px] px-3">
-        System Build v1.2.0 • Online Judge Active
+      <div className="pt-4 border-t border-surface-800/60 flex items-center justify-between text-[10px] font-mono text-surface-500 px-3">
+        <span className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Engine v1.2.0
+        </span>
+        <span>Isolated</span>
       </div>
     </aside>
   );

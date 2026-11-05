@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { Terminal, Lock, Mail, ArrowRight, Sparkles, Shield } from 'lucide-react';
+import { Logo } from '../components/Logo';
+import { Lock, Mail, ArrowRight, Sparkles, Shield } from 'lucide-react';
 
 interface LoginPageProps {
   onNavigate: (page: string) => void;
@@ -42,39 +43,38 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
 
   return (
     <div className="min-h-screen bg-surface-950 flex flex-col justify-center items-center px-4 py-12 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_-10%,rgba(99,102,241,0.18),rgba(255,255,255,0))]" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-b from-brand-600/10 to-transparent blur-3xl pointer-events-none -z-10" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none -z-10" />
 
       <div className="w-full max-w-md relative z-10 space-y-6">
         {/* Brand */}
-        <div className="text-center space-y-2">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-500 mx-auto flex items-center justify-center shadow-xl shadow-brand-500/25">
-            <Terminal className="w-6 h-6 text-white" />
-          </div>
-          <h2 className="text-2xl font-bold tracking-tight text-white">Sign In to CodeIntel</h2>
+        <div className="text-center space-y-3 flex flex-col items-center">
+          <Logo size="lg" />
+          <h2 className="text-xl font-bold tracking-tight text-white">Sign In to CodeIntel</h2>
           <p className="text-xs text-surface-400">University Automated Code Evaluation & Intelligence</p>
         </div>
 
         {/* 1-Click Fast Login Chips */}
-        <div className="bg-surface-900 border border-surface-800 p-4 rounded-2xl space-y-2.5 shadow-lg">
-          <p className="text-[11px] font-semibold uppercase text-surface-400 tracking-wider text-center flex items-center justify-center gap-1">
+        <div className="bg-surface-900 border border-surface-800 p-4 rounded-2xl space-y-2.5 shadow-xl">
+          <p className="text-[10px] font-mono font-semibold uppercase text-surface-400 tracking-wider text-center flex items-center justify-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5 text-brand-400" /> 1-Click Major Project Demo Sign In
           </p>
           <div className="grid grid-cols-2 gap-2 text-xs">
             <button
               type="button"
               onClick={() => handleQuick('student')}
-              className="p-2.5 bg-surface-950 hover:bg-surface-800 text-white rounded-xl border border-surface-700 font-medium transition text-left"
+              className="p-3 bg-surface-950 hover:bg-surface-850 text-white rounded-xl border border-surface-800 font-medium transition text-left group"
             >
-              <span className="block font-semibold text-brand-300">Alex Chen</span>
+              <span className="block font-semibold text-brand-300 group-hover:text-brand-200">Alex Chen</span>
               <span className="text-[10px] text-surface-400">Student Account</span>
             </button>
             <button
               type="button"
               onClick={() => handleQuick('faculty')}
-              className="p-2.5 bg-surface-950 hover:bg-surface-800 text-white rounded-xl border border-surface-700 font-medium transition text-left"
+              className="p-3 bg-surface-950 hover:bg-surface-850 text-white rounded-xl border border-surface-800 font-medium transition text-left group"
             >
-              <span className="block font-semibold text-indigo-300 flex items-center gap-1">
-                <Shield className="w-3 h-3" /> Dr. Vance
+              <span className="block font-semibold text-indigo-300 group-hover:text-indigo-200 flex items-center gap-1">
+                <Shield className="w-3 h-3 text-indigo-400" /> Dr. Vance
               </span>
               <span className="text-[10px] text-surface-400">Faculty Account</span>
             </button>
@@ -123,7 +123,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-semibold transition shadow-md shadow-brand-600/30 flex items-center justify-center gap-1.5 disabled:opacity-50"
+              className="w-full py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-semibold transition shadow-md shadow-brand-600/25 flex items-center justify-center gap-1.5 disabled:opacity-50 ring-1 ring-brand-400/30"
             >
               {loading ? 'Authenticating...' : 'Sign In'}
             </button>

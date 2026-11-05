@@ -129,3 +129,4 @@ def get_me(current_user: User = Depends(get_current_user), db: Session = Depends
         "avatar_url": current_user.avatar_url,
         "profile": profile_data
     }
+

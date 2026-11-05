@@ -176,3 +176,4 @@ export const SimilarityPairModal: React.FC<SimilarityPairModalProps> = ({ report
     </div>
   );
 };
+

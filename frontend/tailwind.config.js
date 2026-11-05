@@ -9,7 +9,7 @@ export default {
     extend: {
       colors: {
         brand: {
-          50: '#eef2ff',
+          50: '#f0f3ff',
           100: '#e0e7ff',
           200: '#c7d2fe',
           300: '#a5b4fc',
@@ -23,21 +23,27 @@ export default {
         },
         surface: {
           50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617',
+          100: '#e9edf5',
+          200: '#cfd7e6',
+          300: '#a6b1cb',
+          400: '#7e8aa6',
+          500: '#5c6682',
+          600: '#3f4760',
+          700: '#282e42',
+          800: '#1c2030',
+          850: '#141724',
+          900: '#0e101a',
+          950: '#080911',
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
+      },
+      boxShadow: {
+        'glow-brand': '0 0 25px -5px rgba(99, 102, 241, 0.25)',
+        'glow-emerald': '0 0 25px -5px rgba(16, 185, 129, 0.25)',
+        'inner-subtle': 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05)',
       }
     },
   },

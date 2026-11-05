@@ -125,3 +125,4 @@ Returns student-specific performance progression, highest score, strongest progr
 
 ### `GET /api/faculty/analytics` *(Faculty Only)*
 Returns class-wide metrics: grade distribution histogram, common error breakdown, language distribution, and complexity breakdown.
+

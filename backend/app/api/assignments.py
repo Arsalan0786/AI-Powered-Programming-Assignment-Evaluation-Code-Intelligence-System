@@ -157,3 +157,4 @@ def delete_assignment(
     db.delete(assignment)
     db.commit()
     return {"message": "Assignment deleted successfully."}
+
