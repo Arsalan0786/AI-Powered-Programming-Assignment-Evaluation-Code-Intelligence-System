@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: codeintel-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword2026
+      POSTGRES_DB: code_intelligence
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.backend
+    container_name: codeintel-backend
+    restart: always
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgrespassword2026@db:5432/code_intelligence"
+      SECRET_KEY: "super-secret-production-key-ai-code-intel-2026"
+      USE_DOCKER_IF_AVAILABLE: "false"
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ../backend:/app
+      - ../ml_models:/ml_models
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.frontend
+    container_name: codeintel-frontend
+    restart: always
+    ports:
+      - "80:80"
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
